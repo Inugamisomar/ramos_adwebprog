@@ -401,26 +401,37 @@ function ProductPage() {
         // CART EXISTS
         if (existingCart) {
           const existingItems =
-            existingCart.items ||
-            [];
+  existingCart.items || [];
 
-          const updatedItems =
-            existingItems.map(
-              (item) => ({
-                product:
-                  typeof item.product ===
-                  "object"
-                    ? item
-                        .product
-                        ._id
-                    : item.product,
+// Remove invalid/deleted products before
+// rebuilding the cart payload.
+const updatedItems =
+  existingItems
+    .filter(
+      (item) =>
+        item &&
+        item.product
+    )
+    .map((item) => ({
+      product:
+        typeof item.product ===
+        "object"
+          ? item.product?._id
+          : item.product,
 
-                quantity:
-                  Number(
-                    item.quantity
-                  ),
-              })
-            );
+      quantity:
+        Number(
+          item.quantity
+        ),
+    }))
+    .filter(
+      (item) =>
+        item.product &&
+        Number.isInteger(
+          item.quantity
+        ) &&
+        item.quantity > 0
+    );
 
           const existingItemIndex =
             updatedItems.findIndex(
