@@ -2,7 +2,6 @@ import {
   NavLink,
   Link,
   useNavigate,
-  useLocation,
 } from "react-router-dom";
 
 import {
@@ -33,9 +32,7 @@ const links = [
   },
 ];
 
-// ==============================
 // DESKTOP NAVIGATION STYLE
-// ==============================
 const navLinkClassName = ({
   isActive,
 }) =>
@@ -55,9 +52,7 @@ const navLinkClassName = ({
       : "border-transparent text-zinc-900 hover:border-blue-950 hover:bg-blue-950 hover:text-white",
   ].join(" ");
 
-// ==============================
 // MOBILE NAVIGATION STYLE
-// ==============================
 const mobileNavLinkClassName = ({
   isActive,
 }) =>
@@ -79,9 +74,7 @@ const mobileNavLinkClassName = ({
 const desktopActionClasses =
   "inline-flex min-h-11 items-center justify-center rounded-xl border-2 px-4 py-2 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-400";
 
-// ==============================
 // DESKTOP ACCOUNT NAV STYLE
-// ==============================
 const desktopAccountNavClassName = ({
   isActive,
 }) =>
@@ -97,9 +90,6 @@ const NavBar = () => {
   const navigate =
     useNavigate();
 
-  const location =
-    useLocation();
-
   const menuButtonRef =
     useRef(null);
 
@@ -113,9 +103,7 @@ const NavBar = () => {
     setMobileMenuOpen,
   ] = useState(false);
 
-  // ==============================
   // UPDATE NAVBAR USER
-  // ==============================
   useEffect(() => {
     const handleUserUpdate =
       () => {
@@ -137,17 +125,7 @@ const NavBar = () => {
     };
   }, []);
 
-  // ==============================
-  // CLOSE MOBILE MENU
-  // WHEN ROUTE CHANGES
-  // ==============================
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location.pathname]);
-
-  // ==============================
   // ESCAPE KEY CLOSES MENU
-  // ==============================
   useEffect(() => {
     if (!mobileMenuOpen) {
       return undefined;
@@ -180,9 +158,7 @@ const NavBar = () => {
     };
   }, [mobileMenuOpen]);
 
-  // ==============================
   // CLOSE MOBILE MENU
-  // ==============================
   const closeMobileMenu =
     () => {
       setMobileMenuOpen(
@@ -190,9 +166,7 @@ const NavBar = () => {
       );
     };
 
-  // ==============================
   // LOGOUT
-  // ==============================
   const handleLogout = () => {
     logout();
 

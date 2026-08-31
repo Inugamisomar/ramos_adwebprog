@@ -6,10 +6,7 @@ import {
 import Button from "../../components/Button";
 import apiRequest from "../../services/api";
 
-import {
-  getCurrentUser,
-  saveSession,
-} from "../../services/authService";
+import { saveSession } from "../../services/authService";
 
 const ProfilePage = () => {
   const [
