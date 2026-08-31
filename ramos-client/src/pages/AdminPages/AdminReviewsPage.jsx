@@ -57,9 +57,7 @@ const AdminReviewsPage = () => {
   const editFormRef =
     useRef(null);
 
-  // =========================
   // LOAD REVIEWS
-  // =========================
   const fetchReviews =
     async () => {
       try {
@@ -94,9 +92,7 @@ const AdminReviewsPage = () => {
     fetchReviews();
   }, []);
 
-  // =========================
   // START EDIT
-  // =========================
   const handleEdit =
     (review) => {
       setEditingId(
@@ -124,18 +120,14 @@ const AdminReviewsPage = () => {
       });
     };
 
-  // =========================
   // CANCEL EDIT
-  // =========================
   const cancelEdit = () => {
     setEditingId(null);
     setRating("5");
     setComment("");
   };
 
-  // =========================
   // UPDATE REVIEW
-  // =========================
   const handleSubmit =
     async (event) => {
       event.preventDefault();
@@ -218,9 +210,7 @@ const AdminReviewsPage = () => {
       }
     };
 
-  // =========================
   // FILTER REVIEWS
-  // =========================
   const filteredReviews =
     useMemo(() => {
       const keyword =
@@ -278,9 +268,7 @@ const AdminReviewsPage = () => {
       search,
     ]);
 
-  // =========================
   // REVIEW COUNTS
-  // =========================
   const averageRating =
     reviews.length > 0
       ? reviews.reduce(
@@ -306,9 +294,7 @@ const AdminReviewsPage = () => {
         ) === 5
     ).length;
 
-  // =========================
   // FORMAT DATE
-  // =========================
   const formatDate =
     (date) => {
       if (!date) {
@@ -329,9 +315,7 @@ const AdminReviewsPage = () => {
       );
     };
 
-  // =========================
   // RENDER STARS
-  // =========================
   const renderStars =
     (value) => {
       const safeRating =
@@ -351,9 +335,7 @@ const AdminReviewsPage = () => {
         );
     };
 
-  // =========================
   // LOADING
-  // =========================
   if (loading) {
     return (
       <main className="min-h-screen bg-blue-50 px-4 py-16 sm:px-6 lg:px-8">

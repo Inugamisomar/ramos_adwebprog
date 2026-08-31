@@ -10,9 +10,7 @@ const Product = require(
   "../models/productModel"
 );
 
-// =====================================
 // HELPERS
-// =====================================
 
 const isValidObjectId = (
   value
@@ -35,12 +33,10 @@ const populateOrder = (
     );
 };
 
-// =====================================
 // GET ORDERS
 //
 // Customer -> own orders
 // Admin    -> all orders
-// =====================================
 
 const getOrders = async (
   req,
@@ -81,9 +77,7 @@ const getOrders = async (
   }
 };
 
-// =====================================
 // GET ORDER BY ID
-// =====================================
 
 const getOrderById =
   async (req, res) => {
@@ -156,10 +150,8 @@ const getOrderById =
     }
   };
 
-// =====================================
 // CREATE ORDER
 // CUSTOMER ONLY
-// =====================================
 
 const createOrder = async (
   req,
@@ -187,9 +179,7 @@ const createOrder = async (
       paymentMethod,
     } = req.body;
 
-    // =====================================
     // BASIC VALIDATION
-    // =====================================
 
     if (
       !Array.isArray(
@@ -233,9 +223,7 @@ const createOrder = async (
         });
     }
 
-    // =====================================
     // COMBINE DUPLICATE PRODUCT ENTRIES
-    // =====================================
     //
     // Example:
     // Product A quantity 3
@@ -312,9 +300,7 @@ const createOrder = async (
       );
     }
 
-    // =====================================
     // VALIDATE PRODUCTS AND STOCK
-    // =====================================
 
     let totalPrice = 0;
 
@@ -371,9 +357,7 @@ const createOrder = async (
       });
     }
 
-    // =====================================
     // DEDUCT PRODUCT STOCK
-    // =====================================
 
     for (
       const item of
@@ -385,9 +369,7 @@ const createOrder = async (
       await item.product.save();
     }
 
-    // =====================================
     // CREATE ORDER
-    // =====================================
 
     const order =
       await Order.create({
@@ -456,10 +438,8 @@ const createOrder = async (
   }
 };
 
-// =====================================
 // UPDATE ORDER
 // ADMIN ONLY
-// =====================================
 
 const updateOrder = async (
   req,
@@ -531,9 +511,7 @@ const updateOrder = async (
         });
     }
 
-    // =====================================
     // VALID STATUS TRANSITIONS
-    // =====================================
 
     const validTransitions = {
       Pending: [
@@ -613,10 +591,8 @@ const updateOrder = async (
   }
 };
 
-// =====================================
 // DELETE ORDER
 // ADMIN ONLY
-// =====================================
 
 const deleteOrder = async (
   req,

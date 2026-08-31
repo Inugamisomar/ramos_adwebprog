@@ -10,9 +10,7 @@ const User = require(
   "../models/userModel"
 );
 
-// =====================================
 // HELPERS
-// =====================================
 
 const isValidObjectId = (
   value
@@ -46,10 +44,8 @@ const sanitizeUser = (
   return userResponse;
 };
 
-// =====================================
 // GET ALL USERS
 // ADMIN ONLY
-// =====================================
 
 const getUsers = async (
   req,
@@ -81,10 +77,8 @@ const getUsers = async (
   }
 };
 
-// =====================================
 // GET USER BY ID
 // ADMIN ONLY
-// =====================================
 
 const getUserById = async (
   req,
@@ -137,10 +131,8 @@ const getUserById = async (
   }
 };
 
-// =====================================
 // CREATE USER
 // ADMIN ONLY
-// =====================================
 
 const createUser = async (
   req,
@@ -349,10 +341,8 @@ const createUser = async (
   }
 };
 
-// =====================================
 // UPDATE USER
 // ADMIN ONLY
-// =====================================
 
 const updateUser = async (
   req,
@@ -602,10 +592,8 @@ const updateUser = async (
   }
 };
 
-// =====================================
 // DELETE USER
 // ADMIN ONLY
-// =====================================
 
 const deleteUser = async (
   req,

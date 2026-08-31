@@ -3,9 +3,7 @@ const mongoose = require("mongoose");
 const Review = require("../models/reviewModel");
 const Product = require("../models/productModel");
 
-// ==============================
 // HELPERS
-// ==============================
 
 const isValidObjectId = (value) => {
   return mongoose.Types.ObjectId.isValid(
@@ -22,9 +20,7 @@ const populateReview = (query) => {
     );
 };
 
-// ==============================
 // GET ALL REVIEWS
-// ==============================
 
 const getReviews = async (
   req,
@@ -56,9 +52,7 @@ const getReviews = async (
   }
 };
 
-// ==============================
 // GET REVIEW BY ID
-// ==============================
 
 const getReviewById = async (
   req,
@@ -108,9 +102,7 @@ const getReviewById = async (
   }
 };
 
-// ==============================
 // CREATE REVIEW
-// ==============================
 
 const createReview = async (
   req,
@@ -282,9 +274,7 @@ const createReview = async (
   }
 };
 
-// ==============================
 // UPDATE REVIEW
-// ==============================
 
 const updateReview = async (
   req,
@@ -433,9 +423,7 @@ const updateReview = async (
   }
 };
 
-// ==============================
 // DELETE REVIEW
-// ==============================
 
 const deleteReview = async (
   req,

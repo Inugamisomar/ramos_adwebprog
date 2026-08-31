@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 const Category = require("../models/categoryModel");
 
-// =====================================
 // GET ALL CATEGORIES
-// =====================================
 const getCategories = async (req, res) => {
   try {
     const categories = await Category.find().sort({
@@ -20,9 +18,7 @@ const getCategories = async (req, res) => {
   }
 };
 
-// =====================================
 // GET CATEGORY BY ID
-// =====================================
 const getCategoryById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -51,10 +47,8 @@ const getCategoryById = async (req, res) => {
   }
 };
 
-// =====================================
 // CREATE CATEGORY
 // ADMIN ONLY
-// =====================================
 const createCategory = async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -115,10 +109,8 @@ const createCategory = async (req, res) => {
   }
 };
 
-// =====================================
 // UPDATE CATEGORY
 // ADMIN ONLY
-// =====================================
 const updateCategory = async (req, res) => {
   try {
     const { id } = req.params;
@@ -210,10 +202,8 @@ const updateCategory = async (req, res) => {
   }
 };
 
-// =====================================
 // DELETE CATEGORY
 // ADMIN ONLY
-// =====================================
 const deleteCategory = async (req, res) => {
   try {
     const { id } = req.params;

@@ -1,11 +1,9 @@
 const Cart = require("../models/cartModel");
 const Product = require("../models/productModel");
 
-// =====================================
 // GET CARTS
 // Customer -> only their own cart
 // Admin    -> all carts
-// =====================================
 const getCarts = async (req, res) => {
   try {
     let filter = {};
@@ -31,11 +29,9 @@ const getCarts = async (req, res) => {
   }
 };
 
-// =====================================
 // GET CART BY ID
 // Customer -> only own cart
 // Admin    -> any cart
-// =====================================
 const getCartById = async (req, res) => {
   try {
     const cart = await Cart.findById(
@@ -76,10 +72,8 @@ const getCartById = async (req, res) => {
   }
 };
 
-// =====================================
 // CREATE CART
 // Logged-in user only
-// =====================================
 const createCart = async (req, res) => {
   try {
     const { items } = req.body;
@@ -190,11 +184,9 @@ const createCart = async (req, res) => {
   }
 };
 
-// =====================================
 // UPDATE CART
 // Customer -> only own cart
 // Admin    -> any cart
-// =====================================
 const updateCart = async (req, res) => {
   try {
     const cart = await Cart.findById(
@@ -322,11 +314,9 @@ const updateCart = async (req, res) => {
   }
 };
 
-// =====================================
 // DELETE CART
 // Customer -> only own cart
 // Admin    -> any cart
-// =====================================
 const deleteCart = async (req, res) => {
   try {
     const cart = await Cart.findById(

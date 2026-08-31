@@ -79,9 +79,7 @@ const AdminProductsPage = () => {
   const formRef =
     useRef(null);
 
-  // =========================
   // LOAD PRODUCTS
-  // =========================
   const fetchProducts =
     async () => {
       const data =
@@ -100,9 +98,7 @@ const AdminProductsPage = () => {
       );
     };
 
-  // =========================
   // LOAD CATEGORIES
-  // =========================
   const fetchCategories =
     async () => {
       const data =
@@ -121,9 +117,7 @@ const AdminProductsPage = () => {
       );
     };
 
-  // =========================
   // LOAD SUPPLIERS
-  // =========================
   const fetchSuppliers =
     async () => {
       const data =
@@ -142,9 +136,7 @@ const AdminProductsPage = () => {
       );
     };
 
-  // =========================
   // INITIAL LOAD
-  // =========================
   useEffect(() => {
     const loadData =
       async () => {
@@ -170,9 +162,7 @@ const AdminProductsPage = () => {
     loadData();
   }, []);
 
-  // =========================
   // FORM INPUT
-  // =========================
   const handleChange =
     (event) => {
       const {
@@ -188,17 +178,13 @@ const AdminProductsPage = () => {
       );
     };
 
-  // =========================
   // RESET FORM
-  // =========================
   const resetForm = () => {
     setForm(emptyForm);
     setEditingId(null);
   };
 
-  // =========================
   // EDIT PRODUCT
-  // =========================
   const handleEdit =
     (product) => {
       setError("");
@@ -257,9 +243,7 @@ const AdminProductsPage = () => {
       });
     };
 
-  // =========================
   // CREATE / UPDATE PRODUCT
-  // =========================
   const handleSubmit =
     async (event) => {
       event.preventDefault();
@@ -402,9 +386,7 @@ const AdminProductsPage = () => {
       }
     };
 
-  // =========================
   // DELETE PRODUCT
-  // =========================
   const handleDelete =
     async (product) => {
       const confirmed =
@@ -460,9 +442,7 @@ const AdminProductsPage = () => {
       }
     };
 
-  // =========================
   // SEARCH DISPLAY
-  // =========================
   const filteredProducts =
     useMemo(() => {
       const keyword =
@@ -521,9 +501,7 @@ const AdminProductsPage = () => {
       search,
     ]);
 
-  // =========================
   // FORMAT PRICE
-  // =========================
   const formatPrice =
     (value) =>
       Number(
@@ -536,9 +514,7 @@ const AdminProductsPage = () => {
         }
       );
 
-  // =========================
   // LOADING
-  // =========================
   if (
     loading
   ) {

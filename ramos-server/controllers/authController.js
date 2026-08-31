@@ -10,9 +10,7 @@ const jwt = require(
   "jsonwebtoken"
 );
 
-// =====================================
 // HELPERS
-// =====================================
 
 const generateToken = (
   id,
@@ -51,9 +49,7 @@ const buildUserResponse = (
   };
 };
 
-// =====================================
 // REGISTER USER
-// =====================================
 
 const registerUser = async (
   req,
@@ -245,9 +241,7 @@ const registerUser = async (
   }
 };
 
-// =====================================
 // LOGIN USER
-// =====================================
 
 const loginUser = async (
   req,
@@ -353,9 +347,7 @@ const loginUser = async (
   }
 };
 
-// =====================================
 // GET PROFILE
-// =====================================
 
 const getProfile = async (
   req,
@@ -385,9 +377,7 @@ const getProfile = async (
   }
 };
 
-// =====================================
 // UPDATE PROFILE
-// =====================================
 
 const updateProfile = async (
   req,
@@ -541,9 +531,7 @@ const updateProfile = async (
   }
 };
 
-// =====================================
 // CHANGE PASSWORD
-// =====================================
 
 const changePassword = async (
   req,

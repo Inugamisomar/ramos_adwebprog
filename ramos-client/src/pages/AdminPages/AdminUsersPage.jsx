@@ -67,9 +67,7 @@ const AdminUsersPage = () => {
   const editFormRef =
     useRef(null);
 
-  // =========================
   // LOAD USERS
-  // =========================
   const fetchUsers =
     async () => {
       try {
@@ -104,9 +102,7 @@ const AdminUsersPage = () => {
     fetchUsers();
   }, []);
 
-  // =========================
   // EDIT USER
-  // =========================
   const handleEdit =
     (user) => {
       setEditingId(
@@ -144,9 +140,7 @@ const AdminUsersPage = () => {
       });
     };
 
-  // =========================
   // CANCEL EDIT
-  // =========================
   const cancelEdit =
     () => {
       setEditingId(null);
@@ -155,9 +149,7 @@ const AdminUsersPage = () => {
       setRole("customer");
     };
 
-  // =========================
   // SAVE USER
-  // =========================
   const handleSubmit =
     async (event) => {
       event.preventDefault();
@@ -238,9 +230,7 @@ const AdminUsersPage = () => {
       }
     };
 
-  // =========================
   // ACTIVE / INACTIVE
-  // =========================
   const handleStatusToggle =
     async (user) => {
       const newStatus =
@@ -312,9 +302,7 @@ const AdminUsersPage = () => {
       }
     };
 
-  // =========================
   // FILTER USERS
-  // =========================
   const filteredUsers =
     useMemo(() => {
       const keyword =
@@ -349,9 +337,7 @@ const AdminUsersPage = () => {
       search,
     ]);
 
-  // =========================
   // USER COUNTS
-  // =========================
   const activeCount =
     users.filter(
       (user) =>
@@ -378,9 +364,7 @@ const AdminUsersPage = () => {
         "customer"
     ).length;
 
-  // =========================
   // LOADING
-  // =========================
   if (loading) {
     return (
       <main className="min-h-screen bg-blue-50 px-4 py-16 sm:px-6 lg:px-8">

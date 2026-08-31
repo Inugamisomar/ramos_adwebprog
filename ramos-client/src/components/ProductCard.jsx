@@ -45,8 +45,7 @@ const ProductCard = ({
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-3xl border-2 border-blue-950 bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
-      
-      // PRODUCT IMAGE 
+      {/* PRODUCT IMAGE */}
       <div className="aspect-[4/3] overflow-hidden bg-zinc-100">
         {product.image ? (
           <img
@@ -65,7 +64,6 @@ const ProductCard = ({
               aria-hidden="true"
               className="text-4xl"
             >
-              📦
             </span>
 
             <span className="text-sm font-semibold">
@@ -75,7 +73,7 @@ const ProductCard = ({
         )}
       </div>
 
-      // CARD CONTENT 
+      {/* CARD CONTENT */}
       <div className="flex flex-1 flex-col p-5">
         {/* CATEGORY */}
         <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-700">
@@ -95,12 +93,12 @@ const ProductCard = ({
           </span>
         </p>
 
-        // PRODUCT NAME
+        {/* PRODUCT NAME */}
         <h3 className="mt-2 text-xl font-black leading-snug text-blue-950">
           {product.name}
         </h3>
 
-        // PRICE
+        {/* PRICE */}
         <p className="mt-3 text-2xl font-black text-zinc-950">
           <span className="sr-only">
             Price:
@@ -108,7 +106,7 @@ const ProductCard = ({
           ₱{formattedPrice}
         </p>
 
-        // STOCK 
+        {/* STOCK */}
         <div className="mt-3">
           {stock > 0 ? (
             <span className="inline-flex items-center gap-2 rounded-full border border-green-300 bg-green-50 px-3 py-1.5 text-xs font-bold text-green-900">
@@ -131,7 +129,7 @@ const ProductCard = ({
           )}
         </div>
 
-        // SUPPLIER 
+        {/* SUPPLIER */}
         {supplierName && (
           <p className="mt-4 text-sm leading-6 text-zinc-700">
             <span className="font-bold text-zinc-950">
@@ -141,12 +139,12 @@ const ProductCard = ({
           </p>
         )}
 
-        //DESCRIPTION
+        {/* DESCRIPTION */}
         <p className="mt-3 flex-1 text-sm leading-6 text-zinc-700">
           {description}
         </p>
 
-        //VIEW PRODUCT 
+        {/* VIEW PRODUCT */}
         <Button
           to={`/products/${product._id}`}
           variant="blue"

@@ -5,9 +5,7 @@ const Category = require("../models/categoryModel");
 const Supplier = require("../models/supplierModel");
 const HttpStatus = require("../config/constants");
 
-// ==============================
 // HELPER FUNCTIONS
-// ==============================
 
 // Escape special regex characters from user input.
 const escapeRegex = (value = "") => {
@@ -78,9 +76,7 @@ const findSupplier = async (value) => {
   });
 };
 
-// ==============================
 // GET ALL PRODUCTS
-// ==============================
 
 const getProducts = async (req, res) => {
   try {
@@ -302,9 +298,7 @@ const getProducts = async (req, res) => {
   }
 };
 
-// ==============================
 // GET ONE PRODUCT
-// ==============================
 
 const getProductById = async (
   req,
@@ -375,9 +369,7 @@ const getProductById = async (
   }
 };
 
-// ==============================
 // CREATE PRODUCT
-// ==============================
 
 const createProduct = async (
   req,
@@ -606,9 +598,7 @@ const createProduct = async (
   }
 };
 
-// ==============================
 // UPDATE PRODUCT
-// ==============================
 
 const updateProduct = async (
   req,
@@ -909,9 +899,7 @@ const updateProduct = async (
   }
 };
 
-// ==============================
 // DELETE PRODUCT
-// ==============================
 
 const deleteProduct = async (
   req,

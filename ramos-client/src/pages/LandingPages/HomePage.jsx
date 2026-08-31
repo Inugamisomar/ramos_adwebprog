@@ -88,9 +88,7 @@ const HomePage = () => {
   return (
     <div className="flex w-full flex-col gap-8">
 
-      {/* ============================== */}
       {/* HERO */}
-      {/* ============================== */}
       <section
         aria-labelledby="home-hero-title"
         className="relative overflow-hidden border-y-2 border-zinc-900 bg-zinc-950"
@@ -152,9 +150,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ============================== */}
       {/* STORE OVERVIEW */}
-      {/* ============================== */}
       <section
         aria-labelledby="store-overview-title"
         className="bg-blue-50 px-4 py-10 sm:px-6 lg:px-8"
@@ -254,14 +250,7 @@ const HomePage = () => {
 
             {/* SEARCH */}
             <article className="rounded-3xl border-2 border-zinc-900 bg-white p-6 shadow-sm">
-              <p
-                aria-hidden="true"
-                className="text-3xl"
-              >
-                🔎
-              </p>
-
-              <h3 className="mt-3 text-lg font-black text-zinc-950">
+              <h3 className="text-lg font-black text-zinc-950">
                 Search Products
               </h3>
 
@@ -283,14 +272,7 @@ const HomePage = () => {
 
             {/* CUSTOMER FEATURES */}
             <article className="rounded-3xl border-2 border-zinc-900 bg-white p-6 shadow-sm">
-              <p
-                aria-hidden="true"
-                className="text-3xl"
-              >
-                📦
-              </p>
-
-              <h3 className="mt-3 text-lg font-black text-zinc-950">
+              <h3 className="text-lg font-black text-zinc-950">
                 Easy Ordering
               </h3>
 
@@ -314,9 +296,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* ============================== */}
       {/* SHOP SECTIONS */}
-      {/* ============================== */}
       <section
         aria-labelledby="shop-sections-title"
         className="px-4 py-10 sm:px-6 lg:px-8"

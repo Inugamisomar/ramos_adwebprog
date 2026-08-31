@@ -8,18 +8,14 @@ const HttpStatus = require(
   "../config/constants"
 );
 
-// =====================================
 // HELPERS
-// =====================================
 const isValidEmail = (email) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
     email
   );
 };
 
-// =====================================
 // GET ALL SUPPLIERS
-// =====================================
 const getSuppliers = async (req, res) => {
   try {
     const suppliers = await Supplier.find().sort({
@@ -46,9 +42,7 @@ const getSuppliers = async (req, res) => {
   }
 };
 
-// =====================================
 // GET SUPPLIER BY ID
-// =====================================
 const getSupplierById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -96,10 +90,8 @@ const getSupplierById = async (req, res) => {
   }
 };
 
-// =====================================
 // CREATE SUPPLIER
 // ADMIN ONLY
-// =====================================
 const createSupplier = async (req, res) => {
   try {
     const {
@@ -227,10 +219,8 @@ const createSupplier = async (req, res) => {
   }
 };
 
-// =====================================
 // UPDATE SUPPLIER
 // ADMIN ONLY
-// =====================================
 const updateSupplier = async (req, res) => {
   try {
     const { id } = req.params;
@@ -394,10 +384,8 @@ const updateSupplier = async (req, res) => {
   }
 };
 
-// =====================================
 // DELETE SUPPLIER
 // ADMIN ONLY
-// =====================================
 const deleteSupplier = async (req, res) => {
   try {
     const { id } = req.params;
