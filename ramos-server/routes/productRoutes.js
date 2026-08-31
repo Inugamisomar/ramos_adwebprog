@@ -19,10 +19,7 @@ const {
 
 const router = express.Router();
 
-// ==============================
 // PUBLIC ROUTES
-// ==============================
-
 // Anyone can view products
 router.get(
   "/",
@@ -35,10 +32,7 @@ router.get(
   getProductById
 );
 
-// ==============================
 // ADMIN PROTECTED ROUTES
-// ==============================
-
 // Only logged-in admins
 // can create a product
 router.post(

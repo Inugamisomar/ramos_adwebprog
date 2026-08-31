@@ -28,9 +28,7 @@ const HomePage = () => {
   const [error, setError] =
     useState("");
 
-  // ==============================
   // LOAD REAL STORE DATA
-  // ==============================
   useEffect(() => {
     const loadOverview =
       async () => {

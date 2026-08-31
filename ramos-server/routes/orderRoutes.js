@@ -20,16 +20,13 @@ const {
 
 const router = express.Router();
 
-// ==============================
 // CUSTOMER / ADMIN
-// ==============================
-
 // Customer:
 // - sees only their own orders
-//
+
 // Admin:
 // - can see all orders
-//
+
 // The controller handles the ownership / role filtering.
 router.get(
   "/",
@@ -39,7 +36,7 @@ router.get(
 
 // Customer:
 // - can view their own order
-//
+
 // Admin:
 // - can view any order
 router.get(
@@ -48,9 +45,7 @@ router.get(
   getOrderById
 );
 
-// ==============================
 // CUSTOMER ONLY
-// ==============================
 
 // Only customers can place orders
 router.post(
@@ -60,9 +55,7 @@ router.post(
   createOrder
 );
 
-// ==============================
 // ADMIN ONLY
-// ==============================
 
 // Admin updates order status
 router.put(

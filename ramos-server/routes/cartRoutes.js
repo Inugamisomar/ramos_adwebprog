@@ -22,9 +22,7 @@ const {
 const router =
   express.Router();
 
-// =====================================
 // CUSTOMER CART ROUTES
-// =====================================
 
 router.get(
   "/",

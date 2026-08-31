@@ -22,9 +22,7 @@ const {
 const router =
   express.Router();
 
-// =====================================
 // PUBLIC ROUTES
-// =====================================
 
 // Register
 router.post(
@@ -38,9 +36,7 @@ router.post(
   loginUser
 );
 
-// =====================================
 // PROTECTED PROFILE ROUTES
-// =====================================
 
 // View profile
 router.get(
@@ -63,9 +59,7 @@ router.put(
   changePassword
 );
 
-// =====================================
 // ADMIN TEST ROUTE
-// =====================================
 router.get(
   "/admin-test",
   protect,

@@ -16,9 +16,7 @@ const AdminPage = () => {
 
   const [error, setError] = useState("");
 
-  // =========================
   // LOAD ADMIN DASHBOARD
-  // =========================
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
@@ -80,9 +78,7 @@ const AdminPage = () => {
     fetchDashboardData();
   }, []);
 
-  // =========================
   // DASHBOARD COUNTS
-  // =========================
   const pendingOrders = orders.filter(
     (order) => order.status === "Pending",
   ).length;
@@ -99,9 +95,7 @@ const AdminPage = () => {
 
   const inactiveUsers = users.filter((user) => !user.isActive).length;
 
-  // =========================
   // STATISTICS
-  // =========================
   const stats = [
     {
       label: "Products",
@@ -132,9 +126,7 @@ const AdminPage = () => {
     },
   ];
 
-  // =========================
   // MANAGEMENT SECTIONS
-  // =========================
   const managementSections = [
     {
       title: "Product Management",
@@ -199,9 +191,7 @@ const AdminPage = () => {
     },
   ];
 
-  // =========================
   // LOADING
-  // =========================
   if (loading) {
     return (
       <section

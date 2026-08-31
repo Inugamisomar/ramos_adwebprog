@@ -19,9 +19,7 @@ const {
 
 const router = express.Router();
 
-// ==============================
 // PUBLIC ROUTES
-// ==============================
 
 // Anyone can view suppliers
 router.get(
@@ -35,9 +33,7 @@ router.get(
   getSupplierById
 );
 
-// ==============================
 // ADMIN-ONLY ROUTES
-// ==============================
 
 // Create supplier
 router.post(

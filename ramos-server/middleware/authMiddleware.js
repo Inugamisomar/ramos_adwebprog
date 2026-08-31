@@ -1,10 +1,8 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
-// =====================================
 // PROTECT
 // User must be logged in
-// =====================================
 const protect = async (
   req,
   res,
@@ -83,9 +81,7 @@ const protect = async (
   }
 };
 
-// =====================================
 // ADMIN ONLY
-// =====================================
 const adminOnly = (
   req,
   res,
@@ -106,9 +102,7 @@ const adminOnly = (
     });
 };
 
-// =====================================
 // CUSTOMER ONLY
-// =====================================
 const customerOnly = (
   req,
   res,

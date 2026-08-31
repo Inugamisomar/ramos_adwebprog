@@ -25,9 +25,7 @@ function ProductPage() {
   const currentUser =
     getCurrentUser();
 
-  // =========================
   // PRODUCT STATE
-  // =========================
   const [
     product,
     setProduct,
@@ -43,9 +41,7 @@ function ProductPage() {
     setError,
   ] = useState("");
 
-  // =========================
   // CART STATE
-  // =========================
   const [
     cartMessage,
     setCartMessage,
@@ -61,9 +57,7 @@ function ProductPage() {
     setAddingToCart,
   ] = useState(false);
 
-  // =========================
   // REVIEW STATE
-  // =========================
   const [
     reviews,
     setReviews,
@@ -99,9 +93,7 @@ function ProductPage() {
     setSubmittingReview,
   ] = useState(false);
 
-  // =========================
   // LOAD PRODUCT
-  // =========================
   useEffect(() => {
     const fetchProduct =
       async () => {
@@ -147,9 +139,7 @@ function ProductPage() {
     }
   }, [id]);
 
-  // =========================
   // LOAD REVIEWS
-  // =========================
   useEffect(() => {
     if (!product?._id) {
       return;
@@ -217,9 +207,7 @@ function ProductPage() {
     fetchReviews();
   }, [product?._id]);
 
-  // =========================
   // CREATE REVIEW
-  // =========================
   const handleReviewSubmit =
     async (event) => {
       event.preventDefault();
@@ -333,9 +321,7 @@ function ProductPage() {
       }
     };
 
-  // =========================
   // ADD TO CART
-  // =========================
   const handleAddToCart =
     async () => {
       setCartMessage("");
@@ -529,9 +515,7 @@ function ProductPage() {
       }
     };
 
-  // =========================
   // LOADING
-  // =========================
   if (loading) {
     return (
       <section
@@ -564,9 +548,7 @@ function ProductPage() {
     );
   }
 
-  // =========================
   // ERROR
-  // =========================
   if (error) {
     return (
       <section
@@ -604,9 +586,7 @@ function ProductPage() {
     );
   }
 
-  // =========================
   // PRODUCT NOT FOUND
-  // =========================
   if (!product) {
     return (
       <section
@@ -646,9 +626,7 @@ function ProductPage() {
     );
   }
 
-  // =========================
   // PRODUCT VALUES
-  // =========================
   const categoryName =
     typeof product.category ===
     "object"
@@ -677,9 +655,7 @@ function ProductPage() {
       }
     );
 
-  // =========================
   // AVERAGE RATING
-  // =========================
   const averageRating =
     reviews.length > 0
       ? (

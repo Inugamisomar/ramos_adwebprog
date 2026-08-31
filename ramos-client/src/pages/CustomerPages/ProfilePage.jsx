@@ -3,13 +3,13 @@ import {
   useState,
 } from "react";
 
-import Button from "../components/Button";
-import apiRequest from "../services/api";
+import Button from "../../components/Button";
+import apiRequest from "../../services/api";
 
 import {
   getCurrentUser,
   saveSession,
-} from "../services/authService";
+} from "../../services/authService";
 
 const ProfilePage = () => {
   const [
@@ -67,9 +67,7 @@ const ProfilePage = () => {
     setConfirmPassword,
   ] = useState("");
 
-  // =========================
   // PASSWORD VISIBILITY
-  // =========================
   const [
     showCurrentPassword,
     setShowCurrentPassword,
@@ -85,9 +83,7 @@ const ProfilePage = () => {
     setShowConfirmPassword,
   ] = useState(false);
 
-  // =========================
   // LOAD PROFILE
-  // =========================
   const fetchProfile =
     async () => {
       try {
@@ -124,9 +120,7 @@ const ProfilePage = () => {
     fetchProfile();
   }, []);
 
-  // =========================
   // UPDATE PROFILE
-  // =========================
   const handleUpdateProfile =
     async (event) => {
       event.preventDefault();
@@ -182,9 +176,7 @@ const ProfilePage = () => {
           data.user.email
         );
 
-        // =========================
         // UPDATE STORED USER
-        // =========================
         const token =
           localStorage.getItem(
             "token"
@@ -217,9 +209,7 @@ const ProfilePage = () => {
       }
     };
 
-  // =========================
   // CHANGE PASSWORD
-  // =========================
   const handleChangePassword =
     async (event) => {
       event.preventDefault();
@@ -331,9 +321,7 @@ const ProfilePage = () => {
       }
     };
 
-  // =========================
   // PROFILE INITIAL
-  // =========================
   const profileInitial =
     profile?.name
       ?.trim()
@@ -341,9 +329,7 @@ const ProfilePage = () => {
       ?.toUpperCase() ||
     "U";
 
-  // =========================
   // LOADING
-  // =========================
   if (loading) {
     return (
       <section

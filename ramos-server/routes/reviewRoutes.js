@@ -20,9 +20,7 @@ const {
 
 const router = express.Router();
 
-// ==============================
 // PUBLIC REVIEW ROUTES
-// ==============================
 
 // Anyone can view reviews
 router.get(
@@ -36,9 +34,7 @@ router.get(
   getReviewById
 );
 
-// ==============================
 // CUSTOMER ONLY
-// ==============================
 
 // Only customers can create reviews
 router.post(
@@ -48,9 +44,7 @@ router.post(
   createReview
 );
 
-// ==============================
 // ADMIN ONLY
-// ==============================
 
 // Only admins can edit reviews
 router.put(

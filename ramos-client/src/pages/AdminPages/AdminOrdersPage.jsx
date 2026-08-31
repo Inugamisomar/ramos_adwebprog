@@ -29,9 +29,7 @@ const AdminOrdersPage = () => {
   const [statusFilter, setStatusFilter] =
     useState("All");
 
-  // =========================
   // LOAD ORDERS
-  // =========================
   const fetchOrders =
     async () => {
       try {
@@ -62,9 +60,7 @@ const AdminOrdersPage = () => {
     fetchOrders();
   }, []);
 
-  // =========================
   // UPDATE STATUS
-  // =========================
   const updateStatus =
     async (
       orderId,
@@ -116,9 +112,7 @@ const AdminOrdersPage = () => {
       }
     };
 
-  // =========================
   // FILTER ORDERS
-  // =========================
   const filteredOrders =
     useMemo(() => {
       if (
@@ -138,9 +132,7 @@ const AdminOrdersPage = () => {
       statusFilter,
     ]);
 
-  // =========================
   // COUNTS
-  // =========================
   const pendingCount =
     orders.filter(
       (order) =>
@@ -162,9 +154,7 @@ const AdminOrdersPage = () => {
         "Ready for Claiming"
     ).length;
 
-  // =========================
   // STATUS STYLE
-  // =========================
   const getStatusStyle =
     (status) => {
       if (

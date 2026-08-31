@@ -26,9 +26,7 @@ const ProductListPage = () => {
   const [category, setCategory] =
     useState("all");
 
-  // ==============================
   // FETCH PRODUCTS
-  // ==============================
   const fetchProducts = async (
     searchValue = "",
     categoryValue = "all"
@@ -91,9 +89,7 @@ const ProductListPage = () => {
     }
   };
 
-  // ==============================
   // FETCH CATEGORIES
-  // ==============================
   const fetchCategories =
     async () => {
       try {
@@ -124,9 +120,7 @@ const ProductListPage = () => {
       }
     };
 
-  // ==============================
   // INITIAL LOAD
-  // ==============================
   useEffect(() => {
     const loadPage =
       async () => {
@@ -142,9 +136,7 @@ const ProductListPage = () => {
     loadPage();
   }, []);
 
-  // ==============================
   // SEARCH
-  // ==============================
   const handleSearch = (
     event
   ) => {
@@ -156,9 +148,7 @@ const ProductListPage = () => {
     );
   };
 
-  // ==============================
   // CATEGORY CHANGE
-  // ==============================
   const handleCategoryChange = (
     event
   ) => {
@@ -177,9 +167,7 @@ const ProductListPage = () => {
     );
   };
 
-  // ==============================
   // CLEAR FILTERS
-  // ==============================
   const handleClearFilters =
     () => {
       setSearch("");

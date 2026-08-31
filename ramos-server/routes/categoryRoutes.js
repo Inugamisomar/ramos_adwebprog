@@ -19,9 +19,7 @@ const {
 
 const router = express.Router();
 
-// ==============================
 // PUBLIC ROUTES
-// ==============================
 
 // Anyone can view categories
 router.get(
@@ -35,9 +33,7 @@ router.get(
   getCategoryById
 );
 
-// ==============================
 // ADMIN-ONLY ROUTES
-// ==============================
 
 // Create category
 router.post(

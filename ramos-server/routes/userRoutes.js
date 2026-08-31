@@ -19,9 +19,7 @@ const {
 
 const router = express.Router();
 
-// ==============================
 // ADMIN-ONLY USER MANAGEMENT
-// ==============================
 
 // View all users
 router.get(

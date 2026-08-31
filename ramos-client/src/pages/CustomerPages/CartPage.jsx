@@ -7,8 +7,8 @@ import {
   Link,
 } from "react-router-dom";
 
-import Button from "../components/Button";
-import apiRequest from "../services/api";
+import Button from "../../components/Button";
+import apiRequest from "../../services/api";
 
 const CartPage = () => {
   const [

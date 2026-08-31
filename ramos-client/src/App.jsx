@@ -23,9 +23,9 @@ import SignInPage from "./pages/AuthPages/SignInPage";
 import SignUpPage from "./pages/AuthPages/SignUpPage";
 
 // Customer pages
-import CartPage from "./pages/CartPage";
-import OrdersPage from "./pages/OrdersPage";
-import ProfilePage from "./pages/ProfilePage";
+import CartPage from "./pages/CustomerPages/CartPage";
+import OrdersPage from "./pages/CustomerPages/OrdersPage";
+import ProfilePage from "./pages/CustomerPages/ProfilePage";
 
 // Admin pages
 import AdminPage from "./pages/AdminPages/AdminPage";
@@ -42,9 +42,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
 
-        {/* ================================= */}
         {/* PUBLIC / CUSTOMER LAYOUT */}
-        {/* ================================= */}
         <Route
           path="/"
           element={
@@ -83,9 +81,7 @@ const App = () => {
             }
           />
 
-          {/* ================================= */}
           {/* CUSTOMER ONLY ROUTES */}
-          {/* ================================= */}
 
           {/* Cart */}
           <Route
@@ -115,9 +111,7 @@ const App = () => {
             }
           />
 
-          {/* ================================= */}
           {/* LOGGED-IN USER ROUTE */}
-          {/* ================================= */}
 
           {/* Profile */}
           <Route
@@ -135,9 +129,7 @@ const App = () => {
           />
         </Route>
 
-        {/* ================================= */}
         {/* AUTHENTICATION ROUTES */}
-        {/* ================================= */}
         <Route
           path="/auth"
           element={
@@ -161,9 +153,7 @@ const App = () => {
           />
         </Route>
 
-        {/* ================================= */}
         {/* ADMIN ROUTES */}
-        {/* ================================= */}
         <Route
           path="/admin"
           element={
@@ -217,9 +207,7 @@ const App = () => {
           />
         </Route>
 
-        {/* ================================= */}
         {/* 404 */}
-        {/* ================================= */}
         <Route
           path="*"
           element={

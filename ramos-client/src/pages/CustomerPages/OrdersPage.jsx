@@ -3,8 +3,8 @@ import {
   useState,
 } from "react";
 
-import Button from "../components/Button";
-import apiRequest from "../services/api";
+import Button from "../../components/Button";
+import apiRequest from "../../services/api";
 
 const OrdersPage = () => {
   const [
@@ -22,9 +22,7 @@ const OrdersPage = () => {
     setError,
   ] = useState("");
 
-  // =========================
   // LOAD CUSTOMER ORDERS
-  // =========================
   const fetchOrders =
     async () => {
       try {
@@ -64,9 +62,7 @@ const OrdersPage = () => {
     fetchOrders();
   }, []);
 
-  // =========================
   // STATUS STYLE
-  // =========================
   const getStatusStyle =
     (status) => {
       switch (status) {
@@ -84,9 +80,7 @@ const OrdersPage = () => {
       }
     };
 
-  // =========================
   // STATUS NUMBER
-  // =========================
   const getStatusStep =
     (status) => {
       if (
@@ -106,9 +100,7 @@ const OrdersPage = () => {
       return 1;
     };
 
-  // =========================
   // FORMAT DATE
-  // =========================
   const formatDate =
     (date) => {
       if (!date) {
@@ -129,9 +121,7 @@ const OrdersPage = () => {
       );
     };
 
-  // =========================
   // FORMAT PRICE
-  // =========================
   const formatPrice =
     (value) =>
       Number(
@@ -144,9 +134,7 @@ const OrdersPage = () => {
         }
       );
 
-  // =========================
   // LOADING
-  // =========================
   if (loading) {
     return (
       <section
