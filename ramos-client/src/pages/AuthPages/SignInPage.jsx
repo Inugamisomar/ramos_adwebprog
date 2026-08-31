@@ -1,80 +1,369 @@
-import { Link } from 'react-router-dom';
-import Button from '../../components/Button';
+import { useState } from "react";
+import {
+  Link,
+  useNavigate,
+} from "react-router-dom";
+
+import Button from "../../components/Button";
+
+import {
+  login,
+  saveSession,
+} from "../../services/authService";
 
 const inputClasses =
-  'mt-2 w-full rounded-xl border border-zinc-300 bg-zinc-100 px-4 py-3 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-zinc-900 focus:bg-zinc-50';
-
-const actionButtonClassName = 'w-full rounded-xl py-3 text-[11px] tracking-[0.2em]';
+  "mt-3 min-h-14 w-full rounded-2xl border-2 border-blue-200 bg-white px-5 py-4 text-base text-zinc-900 shadow-sm outline-none transition placeholder:text-zinc-500 hover:border-blue-300 focus:border-blue-700 focus:ring-4 focus:ring-blue-200 disabled:cursor-not-allowed disabled:bg-zinc-100";
 
 const SignInPage = () => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] =
+    useState({
+      email: "",
+      password: "",
+    });
+
+  const [error, setError] =
+    useState("");
+
+  const [loading, setLoading] =
+    useState(false);
+
+  const [
+    showPassword,
+    setShowPassword,
+  ] = useState(false);
+
+  const handleChange = (e) => {
+    const {
+      name,
+      value,
+    } = e.target;
+
+    setFormData(
+      (previousData) => ({
+        ...previousData,
+        [name]: value,
+      })
+    );
+
+    if (error) {
+      setError("");
+    }
+  };
+
+  const handleSubmit =
+    async (e) => {
+      e.preventDefault();
+
+      setError("");
+
+      const email =
+        formData.email.trim();
+
+      if (
+        !email ||
+        !formData.password
+      ) {
+        setError(
+          "Please enter your email and password."
+        );
+        return;
+      }
+
+      try {
+        setLoading(true);
+
+        const data =
+          await login(
+            email,
+            formData.password
+          );
+
+        const token =
+          data.token;
+
+        const user =
+          data.user || {
+            _id: data._id,
+            name: data.name,
+            email: data.email,
+            role: data.role,
+            isActive:
+              data.isActive,
+          };
+
+        if (!token) {
+          throw new Error(
+            "Login succeeded but no token was returned."
+          );
+        }
+
+        saveSession(
+          token,
+          user
+        );
+
+        window.dispatchEvent(
+          new Event(
+            "userUpdated"
+          )
+        );
+
+        if (
+          user.role ===
+          "admin"
+        ) {
+          navigate(
+            "/admin"
+          );
+        } else {
+          navigate("/");
+        }
+      } catch (err) {
+        setError(
+          err.message ||
+            "Unable to login. Please try again."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
   return (
-    <>
-      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">Log In</h1>
-      <p className="mt-3 text-sm leading-6 text-zinc-600">
-        Access your store account to review orders, saved items, and pickup details.
-      </p>
+    <section
+      aria-labelledby="signin-title"
+      className="w-full"
+    >
+      {/* TITLE */}
+      <div className="text-center">
+        <p className="text-sm font-black uppercase tracking-[0.24em] text-blue-700 sm:text-base">
+          Bulldogs Exchange
+        </p>
 
-      <form className="mt-8 space-y-5">
-        <div>
-          <label htmlFor="signin-email" className="text-sm font-medium text-zinc-700">
-            Email Address
-          </label>
-          <input
-            id="signin-email"
-            type="email"
-            placeholder="student@email.com"
-            autoComplete="email"
-            className={inputClasses}
-          />
-        </div>
+        <h1
+          id="signin-title"
+          className="mt-3 text-4xl font-black tracking-tight text-blue-950 sm:text-5xl lg:text-6xl"
+        >
+          Sign In
+        </h1>
 
-        <div>
-          <label htmlFor="signin-password" className="text-sm font-medium text-zinc-700">
-            Password
-          </label>
-          <input
-            id="signin-password"
-            type="password"
-            placeholder="Password"
-            autoComplete="current-password"
-            className={inputClasses}
-          />
-          <p className="mt-2 text-xs leading-5 text-zinc-500">
-            It must be a combination of minimum 8 letters, numbers, and symbols.
-          </p>
-        </div>
-
-        <div className="flex items-center justify-between gap-4 text-sm">
-          <label className="flex items-center gap-2 text-zinc-600">
-            <input type="checkbox" className="h-4 w-4 rounded border-zinc-300 accent-zinc-900" />
-            <span>Remember me</span>
-          </label>
-          <button type="button" className="font-medium text-zinc-700 transition hover:text-zinc-900">
-            Forgot Password?
-          </button>
-        </div>
-
-        <Button type="submit" variant="primary" className={actionButtonClassName}>
-          Log In
-        </Button>
-
-        <div className="grid gap-3 pt-2 sm:grid-cols-2">
-          <Button type="button" variant="secondary" className={actionButtonClassName}>
-            Log In with Google
-          </Button>
-          <Button type="button" variant="secondary" className={actionButtonClassName}>
-            Log In with Apple
-          </Button>
-        </div>
-      </form>
-
-      <div className="mt-8 border-t border-zinc-200 pt-6 text-sm text-zinc-600">
-        No account yet?{' '}
-        <Link to="/auth/signup" className="font-semibold text-zinc-900 transition hover:text-zinc-600">
-          Sign Up
-        </Link>
+        <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-zinc-700 sm:text-lg sm:leading-8">
+          Sign in to manage your
+          account, orders, reviews,
+          and campus purchases.
+        </p>
       </div>
-    </>
+
+      {/* LOGIN CARD */}
+      <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-3xl border-2 border-blue-100 bg-white shadow-xl shadow-blue-950/10">
+        <div className="h-2 bg-yellow-400" />
+
+        <form
+          className="space-y-8 p-8 sm:p-10 lg:p-12"
+          onSubmit={
+            handleSubmit
+          }
+          noValidate
+        >
+          {/* ERROR */}
+          {error && (
+            <div
+              id="signin-error"
+              role="alert"
+              aria-live="assertive"
+              className="rounded-2xl border-2 border-red-300 bg-red-50 px-5 py-4 text-base font-semibold leading-7 text-red-800"
+            >
+              {error}
+            </div>
+          )}
+
+          {/* EMAIL */}
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-base font-bold text-zinc-900 sm:text-lg"
+            >
+              Email address
+              <span
+                aria-hidden="true"
+                className="ml-1 text-red-600"
+              >
+                *
+              </span>
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              name="email"
+              value={
+                formData.email
+              }
+              onChange={
+                handleChange
+              }
+              placeholder="name@example.com"
+              autoComplete="email"
+              inputMode="email"
+              required
+              disabled={
+                loading
+              }
+              aria-required="true"
+              aria-invalid={
+                error
+                  ? "true"
+                  : "false"
+              }
+              aria-describedby={
+                error
+                  ? "signin-error"
+                  : "email-help"
+              }
+              className={
+                inputClasses
+              }
+            />
+
+            <p
+              id="email-help"
+              className="mt-3 text-sm leading-6 text-zinc-600"
+            >
+              Enter the email
+              address registered
+              with your BulldogEx
+              account.
+            </p>
+          </div>
+
+          {/* PASSWORD */}
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-base font-bold text-zinc-900 sm:text-lg"
+            >
+              Password
+              <span
+                aria-hidden="true"
+                className="ml-1 text-red-600"
+              >
+                *
+              </span>
+            </label>
+
+            <div className="relative mt-3">
+              <input
+                id="password"
+                type={
+                  showPassword
+                    ? "text"
+                    : "password"
+                }
+                name="password"
+                value={
+                  formData.password
+                }
+                onChange={
+                  handleChange
+                }
+                placeholder="Enter your password"
+                autoComplete="current-password"
+                required
+                disabled={
+                  loading
+                }
+                aria-required="true"
+                aria-invalid={
+                  error
+                    ? "true"
+                    : "false"
+                }
+                aria-describedby={
+                  error
+                    ? "signin-error"
+                    : "password-help"
+                }
+                className={`${inputClasses} mt-0 pr-32`}
+              />
+
+              <button
+                type="button"
+                onClick={() =>
+                  setShowPassword(
+                    (current) =>
+                      !current
+                  )
+                }
+                disabled={
+                  loading
+                }
+                aria-label={
+                  showPassword
+                    ? "Hide password"
+                    : "Show password"
+                }
+                aria-pressed={
+                  showPassword
+                }
+                className="absolute right-3 top-1/2 min-h-11 -translate-y-1/2 rounded-xl px-4 text-sm font-black uppercase tracking-wider text-blue-800 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {showPassword
+                  ? "Hide"
+                  : "Show"}
+              </button>
+            </div>
+
+            <p
+              id="password-help"
+              className="mt-3 text-sm leading-6 text-zinc-600"
+            >
+              Passwords are case
+              sensitive.
+            </p>
+          </div>
+
+          {/* SIGN IN */}
+          <Button
+            type="submit"
+            variant="blue"
+            disabled={
+              loading
+            }
+            aria-busy={
+              loading
+            }
+            className="min-h-14 w-full rounded-2xl text-base font-black tracking-[0.12em] sm:text-lg"
+          >
+            {loading
+              ? "Signing In..."
+              : "Sign In"}
+          </Button>
+
+          {/* LOADING STATUS */}
+          <div
+            aria-live="polite"
+            aria-atomic="true"
+            className="sr-only"
+          >
+            {loading
+              ? "Signing in. Please wait."
+              : ""}
+          </div>
+        </form>
+      </div>
+
+      {/* ACCOUNT LINK */}
+      <p className="mt-10 text-center text-base leading-7 text-zinc-700 sm:text-lg">
+        Don't have an account?{" "}
+        <Link
+          to="/auth/signup"
+          className="inline-flex min-h-11 items-center rounded-lg px-2 font-bold text-blue-800 underline decoration-2 underline-offset-4 transition hover:text-blue-950 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300 focus-visible:ring-offset-2"
+        >
+          Create Account
+        </Link>
+      </p>
+    </section>
   );
 };
 
